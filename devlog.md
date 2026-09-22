@@ -9,3 +9,7 @@ commit del repositorio privado `saas-turnos` — **solo texto, sin código**.
 
 ---
 
+### 2026-09-22 — fix: subdominio inexistente responde 404 en vez de 500 (TenantCouldNotBeIdentifiedOnDomainException)
+
+---
+
