@@ -5,3 +5,7 @@ commit del repositorio privado `saas-turnos` — **solo texto, sin código**.
 
 ---
 
+### 2026-09-22 — init: ecosistema enjunin.com.ar - Fase 1 MVP (turnos, super admin, caja, lista de espera) + docs roadmap/contexto
+
+---
+
