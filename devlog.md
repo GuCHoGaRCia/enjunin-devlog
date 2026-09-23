@@ -29,3 +29,21 @@ Tests: phpunit 6/6 (59); smokes auditoria 31, recordatorios 18, datos-personales
 
 ---
 
+### 2026-09-23 — Etapa 12: facturacion con comprobantes inmutables
+
+- Tabla tenant turnos_comprobantes: FK turno_id/paciente_id, numeracion
+  correlativa por anio YYYY-NNNNNN (unique + reintento), columna generada
+  turno_emitido + indice unico (un comprobante emitido por turno).
+- Inmutabilidad en 3 capas: trigger BEFORE UPDATE que solo admite
+  emitido->anulado con motivo (SQLSTATE 45000), guard del modelo
+  (updating/deleting) y el indice unico de la BD.
+- FacturacionService::emitir()/anular() con validaciones y auditoria
+  (trait + anular_comprobante manual con previos/nuevos).
+- UI /turnos/facturacion (admin+recepcion) + link en nav; comprobantes
+  incluidos en datosCompletos/export de Ley 25.326.
+- Smoke tests/smoke/facturacion.php: 39 OK, 0 FAIL.
+- Verificacion: PHPUnit 6/6, smokes 178 OK en secuencia, E2E 26/26.
+- Docs: roadmap (Etapa 12, regla 18, fase 3) y contexto-tecnico.
+
+---
+
