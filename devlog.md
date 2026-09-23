@@ -47,3 +47,30 @@ Tests: phpunit 6/6 (59); smokes auditoria 31, recordatorios 18, datos-personales
 
 ---
 
+### 2026-09-23 — Etapa 14: preparacion de produccion cPanel (preflight + fixes de backups/alta de cuentas)
+
+- Nuevo comando php artisan deploy:preflight: checklist §7 ejecutable
+  (env, cola, caches, permisos, migraciones, tablas jobs, mysqldump, crons)
+  con salida PASS/WARN/FAIL y modo --strict para el servidor.
+  Dev: 12 PASS, 7 WARN (brecha dev-prod esperada), 0 FAIL.
+- Pipeline de produccion verificado de punta a punta: optimize (config +
+  routes + view cache) con la suite en verde bajo caches (PHPUnit 7/7,
+  smokes 178 OK, E2E 26) y optimize:clear de vuelta a dev. route:cache
+  acepta closures (Laravel 12 las serializa con SerializableClosure).
+- .env.production.example: plantilla comentada de produccion (§7.2).
+- Fix 1 (backups nunca funcionaron): Cuenta::databaseName() no existia
+  (BadMethodCallException silenciada por un catch aguas abajo) y faltaba el
+  '>' de redireccion en el comando de mysqldump (Couldn't find table).
+  Ahora tenants:backup-all -> Exitosos: 1 con .sql real, y todo fallo
+  queda en provisioning_logs (flag \ en respaldar).
+- Fix 2 (alta de cuentas rota): crear() moria en el log->update() final y
+  limpiarAFallo borraba la cuenta recien creada. Cubierto con el test
+  test_crear_y_eliminar_cuenta_con_bd_propia (13 checks end-to-end).
+- Test de dominio: env() -> config() (env() da null bajo config:cache).
+- Docs: roadmap (Etapa 14, §7 pasos 2/4/7/8, verificacion 7/7) y
+  contexto-tecnico (gotchas §3.18-21, conteos de migraciones, mapa).
+- Verificacion: PHPUnit 7/7 (68 assertions), smokes 178 OK/0 FAIL,
+  E2E 26/26, preflight 0 FAIL, backup y provisioning end-to-end OK.
+
+---
+
