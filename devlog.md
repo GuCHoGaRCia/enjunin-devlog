@@ -280,3 +280,7 @@ E2E 38/0 · preflight 11 PASS 8 WARN 0 FAIL · deploy:package 2 zips OK.
 
 ---
 
+### 2026-09-23 — ci: GitHub Actions con phpunit + los 8 smokes (249 checks)
+
+---
+
