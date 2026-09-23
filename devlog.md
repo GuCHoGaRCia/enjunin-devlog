@@ -74,3 +74,17 @@ Tests: phpunit 6/6 (59); smokes auditoria 31, recordatorios 18, datos-personales
 
 ---
 
+### 2026-09-23 — Etapa 13: reportes de gestion (ocupacion, caja, ausencias, retencion)
+
+- ReportesService: ocupacion por profesional (slots = horarios activos menos
+  bloqueos sobre duracion efectiva, pct puede superar 100%, null sin slots),
+  ingresos por caja con desglose por metodo, ausencias con top-10 de
+  pacientes y retencion (base/rango/nuevos/perdidos).
+- Helper rango(): formato AAAA-MM-DD, ordenamiento y tope 366 dias.
+- UI Livewire /turnos/reportes (4 pestanas, gate admin+recepcion) + link en
+  nav.
+- Smoke tests/smoke/reportes.php: 71 OK, 0 FAIL.
+- Docs: roadmap Etapa 13 completa; suite total 249 OK y E2E 30 checks.
+
+---
+
