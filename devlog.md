@@ -113,3 +113,17 @@ Tests: phpunit 6/6 (59); smokes auditoria 31, recordatorios 18, datos-personales
 
 ---
 
+### 2026-09-23 — deploy: artisan deploy:package (zip de produccion con autorevision)
+
+- Empaqueta apps/plataforma en apps/build/turnos-deploy-<fecha>.zip:
+  allowlist de directorios/archivos; excluye .env* (salvo *.example),
+  logs, sqlite, runtime de storage y bootstrap/cache, public/storage y
+  node_modules. Directorios vacios del esqueleto via addEmptyDir.
+- Autorevision al cerrar el zip: 0 secretos + minimos presentes
+  (exit 1 si falla). --dry-run lista inclusiones/exclusiones.
+- Verificado: extraccion limpia (sin .env, artisan bootea) y
+  deploy:preflight sobre el extracto = 10 PASS / 0 FAIL. Pint PASS.
+- .gitignore raiz: /apps/build/.
+
+---
+
