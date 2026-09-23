@@ -13,3 +13,7 @@ commit del repositorio privado `saas-turnos` — **solo texto, sin código**.
 
 ---
 
+### 2026-09-23 — docs: repo privado GitHub saas-turnos + estado git en roadmap y contexto
+
+---
+
