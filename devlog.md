@@ -88,3 +88,18 @@ Tests: phpunit 6/6 (59); smokes auditoria 31, recordatorios 18, datos-personales
 
 ---
 
+### 2026-09-23 — docs + CI local: setup de tenant, E2E versionado y ajuste de CI
+
+- tests/ci/setup_clinicavida.php: alta idempotente del tenant de prueba
+  clinicavida para CI (TenantProvisioningService: BD + migraciones +
+  TenantDatabaseSeeder).
+- tests/e2e/: e2e_http.ps1 + e2e_setup.php + e2e_cleanup.php versionados
+  (antes solo en Temp; 30 checks HTTP).
+- Docs: roadmap seccion 6 y contexto-tecnico con el pipeline de GitHub
+  Actions (phpunit + 8 smokes = 249 checks) y el E2E.
+- El workflow .github/workflows/ci.yml queda en la rama LOCAL ci-workflow:
+  el push esta bloqueado hasta que la credencial OAuth tenga scope
+  workflow (accion del usuario; documentado en ambos docs).
+
+---
+
