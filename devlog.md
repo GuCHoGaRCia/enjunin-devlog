@@ -103,3 +103,13 @@ Tests: phpunit 6/6 (59); smokes auditoria 31, recordatorios 18, datos-personales
 
 ---
 
+### 2026-09-23 — e2e: scripts autocontenidos (sin rutas absolutas) + receta actualizada
+
+- e2e_setup/e2e_cleanup: __DIR__ en vez de ruta absoluta al proyecto.
+- e2e_http.ps1: jars en %TEMP%\enjunin-e2e, PHP via PHP_BIN/PATH con
+  fallback a XAMPP, setup resuelto desde \.
+- contexto-tecnico seccion 5: receta con la suite versionada.
+- Verificado: E2E 30 OK / 0 FAIL + cleanup desde tests/e2e/.
+
+---
+
