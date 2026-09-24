@@ -142,3 +142,10 @@ Tests: phpunit 6/6 (59); smokes auditoria 31, recordatorios 18, datos-personales
 
 ---
 
+### 2026-09-24 — docs: pint como paso #0 de la verificacion (roadmap 6 + contexto-tecnico)
+
+- Orden de verificacion: pint --test (148) -> phpunit -> 8 smokes ->
+  E2E 30. CI replica el mismo pipeline con el style gate.
+
+---
+
