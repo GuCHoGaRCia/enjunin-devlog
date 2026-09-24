@@ -186,3 +186,7 @@ merced de la proxima operacion de git.
 
 ---
 
+### 2026-09-24 — Etapa 15: sala de espera en vivo (estado en_atencion, tablero, +4 E2E)
+
+---
+
