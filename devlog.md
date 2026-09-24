@@ -177,3 +177,12 @@ Tests: phpunit 6/6 (59); smokes auditoria 31, recordatorios 18, datos-personales
 
 ---
 
+### 2026-09-24 — git: .gitattributes fuerza LF en *.sh
+
+core.autocrlf=true local convierte a CRLF en cada checkout/rebase; el E2E
+bash romperia con \\$'\\\\r': command not found\. El CI de Linux esta a salvo
+(autocrlf off + actions/checkout), pero el working copy local quedaba a la
+merced de la proxima operacion de git.
+
+---
+
