@@ -292,3 +292,12 @@ E2E 38/0 · preflight 11 PASS 8 WARN 0 FAIL · deploy:package 2 zips OK.
 
 ---
 
+### 2026-09-24 — ci: E2E HTTP bash (30 checks) como ultimo step del pipeline
+
+- Levanta artisan serve :8899 (health /up con retry), corre
+  tests/e2e/e2e_http.sh y exige 'RESULTADO E2E: 30 OK, 0 FAIL'.
+- Pipeline completo: pint -> phpunit -> smokes 249 -> E2E 30.
+- YAML validado con js-yaml; bash -n sobre el bloque run extraido.
+
+---
+
