@@ -131,3 +131,14 @@ Tests: phpunit 6/6 (59); smokes auditoria 31, recordatorios 18, datos-personales
 
 ---
 
+### 2026-09-24 — style: pint verde en todo el repo (43 archivos, 43 issues)
+
+- pint (preset laravel) sobre app/, config/, migrations/, routes/ y
+  tests/: concat_space, unary/not_operator_spaces,
+  class_attributes_separation, ordered_imports, phpdoc, etc.
+- Solo estilo, sin cambios semanticos.
+- Verificacion completa post-fix: pint 148/148, phpunit 7/7 (68),
+  8 smokes 249 OK / 0 FAIL, E2E 30/30 + cleanup.
+
+---
+
