@@ -190,3 +190,7 @@ merced de la proxima operacion de git.
 
 ---
 
+### 2026-09-24 — Etapa 15: smoke 403 independiente de APP_DEBUG + docs (150 archivos pint)
+
+---
+
