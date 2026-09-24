@@ -284,3 +284,11 @@ E2E 38/0 · preflight 11 PASS 8 WARN 0 FAIL · deploy:package 2 zips OK.
 
 ---
 
+### 2026-09-24 — ci: gate de pint (style) antes de phpunit
+
+- vendor/bin/pint --test tras composer install: falla rapido si el
+  estilo se rompe (repo actual: PASS 148 archivos).
+- Encabezado y nombre del job actualizados.
+
+---
+
