@@ -160,3 +160,20 @@ Tests: phpunit 6/6 (59); smokes auditoria 31, recordatorios 18, datos-personales
 
 ---
 
+### 2026-09-24 — deploy: scripts/deploy-ftp.ps1 (subida FTP del zip) + docs
+
+- scripts/deploy-ftp.ps1: sube el zip de deploy:package por FTP/FTPS
+  (curl 8.21, -w/-T/--ftp-create-dirs). Password nunca en argv (config
+  temporal UTF-8 sin BOM, borrado en finally) o env DEPLOY_FTP_PASS.
+  2da barrera: re-valida el zip con PHP antes de conectar (detecta
+  .env*/logs/sqlite). -DryRun sin credenciales, -Resume (-C -), -NoTls.
+  ASCII puro: PS 5.1 lee .ps1 sin BOM como ANSI y un UTF-8 mal leido
+  rompe el parseo (gotcha verificado en esta corrida).
+- Tests: parse OK; dry-run sobre zip real OK (34.8 MB, 11992 entradas);
+  zip malicioso con .env aborta exit 1; zip inexistente aborta exit 1.
+- Docs: roadmap 7.1 (subida asistida), contexto-tecnico (receta) y
+  **Fase 2 completada** (E9 recordatorios + E10 planes + E11 auditoria
+  + backups verificados: las 4 items estaban en verde).
+
+---
+
