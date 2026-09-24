@@ -194,3 +194,7 @@ merced de la proxima operacion de git.
 
 ---
 
+### 2026-09-24 — Reportes: columna En at. en el breakdown por estado (smoke 75, total 270)
+
+---
+
