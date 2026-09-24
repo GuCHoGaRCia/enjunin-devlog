@@ -198,3 +198,19 @@ merced de la proxima operacion de git.
 
 ---
 
+### 2026-09-24 — Etapa 16: consulta del médico (historia clinica append-only, fila propia, /turnos/usuarios)
+
+- tabla turnos_historia_clinica (append-only, sin UI de edicion/borrado) + users.profesional_id con fallback por email (User::perfilProfesional)
+- /turnos/consulta gate profesional: mobile-first, fila propia con Atender, form de evolucion, timeline de historia clinica; turnoMio() anti-tampering; acciones via TurnosService::marcar
+- /turnos/usuarios gate admin: alta/edicion de cuentas con rol + vinculo profesional (nadie cambia su propio rol), auditoria de cambios de rol
+- nav por roles: base admin/recepcion + bloque Mi consulta para profesional
+- fix validacion: validator() con data plano y claves form.* no resuelve (via \->validate()); '' -> null antes de validar
+- fixtures con autolimpieza previa por marcas (idempotencia tras crashes)
+- smoke tests/smoke/consulta.php: 35 OK, 0 FAIL -> 10 smokes, 305 OK total
+- E2E sh/ps1: +4 checks -> 38 (ps1: patron de contenido ASCII-safe por lectura ANSI sin BOM)
+- docs: roadmap Etapa 16 + regla 21; conteos 156 pint / 305 smokes / 38 E2E
+
+verificacion: pint PASS 156 · phpunit 7/7 (68) · 10 smokes 305/0 · E2E sh 38/0 · E2E ps1 38/0 · preflight 11 PASS/8 WARN/0 FAIL
+
+---
+
