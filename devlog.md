@@ -301,3 +301,7 @@ E2E 38/0 · preflight 11 PASS 8 WARN 0 FAIL · deploy:package 2 zips OK.
 
 ---
 
+### 2026-09-24 — ci: 9 smokes (270) + E2E 34 checks + pint 150 archivos (Etapa 15)
+
+---
+
