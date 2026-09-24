@@ -149,3 +149,14 @@ Tests: phpunit 6/6 (59); smokes auditoria 31, recordatorios 18, datos-personales
 
 ---
 
+### 2026-09-24 — e2e: version bash/curl (tests/e2e/e2e_http.sh) espejo de los 30 checks
+
+- Mismos 30 checks y labels que e2e_http.ps1; corre en CI (ubuntu) y
+  Git Bash. PHP via PHP_BIN/PATH/fallback XAMPP; jars en TMPDIR.
+- Fix: page_status no debe truncar el jar (borraba la sesion del
+  login y todos los GET daban 302).
+- Verificado local: 30 OK / 0 FAIL + cleanup con artisan serve :8899.
+- Docs: receta E2E y pipeline CI actualizados (paso #0 pint, E2E bash).
+
+---
+
