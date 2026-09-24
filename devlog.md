@@ -305,3 +305,9 @@ E2E 38/0 · preflight 11 PASS 8 WARN 0 FAIL · deploy:package 2 zips OK.
 
 ---
 
+### 2026-09-24 — ci: 10 smokes (305) + E2E 38 checks + pint 156 archivos (Etapa 16)
+
+smoke consulta.php (35 OK) al array; literales RESULTADO E2E 34->38; rebaseado sobre main (d361e77)
+
+---
+
