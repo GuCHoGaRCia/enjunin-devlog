@@ -214,3 +214,36 @@ verificacion: pint PASS 156 · phpunit 7/7 (68) · 10 smokes 305/0 · E2E sh 38/
 
 ---
 
+### 2026-09-26 — deploy: arquitectura de convivencia cPanel sin SSH (2 zips + setup-once)
+
+- deploy:package genera DOS zips con la carpeta destino embebida en la
+  raiz: apps-turnos-*.zip (HOME -> ~/apps/turnos, con vendor) y
+  public-turnos-*.zip (public_html/ -> public_html/turnos), cada uno con
+  su autorevision; --out ahora es directorio.
+- public/index.php autodetecta la base (local ../ | prod
+  ~/apps/turnos), mismo patron que Enjunin Motors; sin storage:link
+  (la app no usa el disco publico, assets por CDN).
+- setup-once.php nuevo: inicializador one-shot para hostings SIN
+  Terminal (key si vacia, migrate, seed, optimize, tenants:migrate),
+  idempotente por marcas en storage/setup-once/, log propio y todo.ok;
+  se instala como cron de 1 minuto y se retira al ver el OK.
+- deploy-ftp.ps1 sube LOS DOS zips con re-validacion por zip (-DryRun
+  muestra el plan de ambos con sus destinos).
+- .env.production.example: runbook sin terminal + prefijo de BD usuario_
+  que exige cPanel (DB_DATABASE y TENANCY_DB_PREFIX).
+- docs/despliegue-cpanel.md NUEVA: guia completa de convivencia
+  (public_html solo expuesto / ~/apps todo lo no expuesto, mismo patron
+  que autos), DNS/subdominios/SSL (wildcard *.enjunin.com.ar ya cubre
+  turnos.enjunin.com.ar; *.turnos.enjunin.com.ar queda pendiente),
+  inicializacion por cron, 4 crons, preflight por cron, smoke de
+  produccion, re-despliegues y gotchas.
+- roadmap §7 + bloque Falta de Etapa 14 y contexto-tecnico §1b
+  actualizados al plan sin-SSH; /enjunin/ (copia de la otra app) al
+  .gitignore raiz; aprendizaje del mysqld caido con grants corrompidos.
+
+Verificacion: pint PASS 157 archivos (+setup-once.php) · phpunit 7/7
+(68) · 10 smokes 305 OK / 0 FAIL · E2E 38 OK / 0 FAIL ·
+deploy:preflight 11 PASS / 8 WARN / 0 FAIL · deploy:package 2 zips OK.
+
+---
+
