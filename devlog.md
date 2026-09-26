@@ -247,3 +247,28 @@ deploy:preflight 11 PASS / 8 WARN / 0 FAIL · deploy:package 2 zips OK.
 
 ---
 
+### 2026-09-26 — repo: espejo local del hosting (public_html/ + apps/)
+
+El repo local queda con la misma estructura que el servidor:
+
+- public_html/ = lo que se sube al docroot: landing index.html
+  PRESERVADA (hasta terminar el proyecto) + images/enjunin.jpg,
+  .htaccess raiz (de autos, intacto), tmp/, enjunin-motors/,
+  GuCHoGaRCia/, y los junctions autos/ y turnos/.
+- apps/ = lo que se sube un nivel arriba: turnos/ (app Laravel,
+  renombrada desde apps/plataforma), autos/ (repo Enjunin Motors,
+  con su .git) y build/ (zips, gitignorado).
+- public_html/{autos,turnos} son junctions a apps/*/public:
+  scripts/link-public.ps1 los recrea tras un clone; PHP los
+  resuelve, asi que la autodetector de public/index.php no cambia
+  (y la rama de produccion ../../apps/turnos tambien resolveria
+  en local porque el layout ES el del hosting).
+- Docs actualizados: despliegue-cpanel.md agrega el §0.1 espejo
+  local; contexto-tecnico.md §1b documenta la decision; paths
+  apps/plataforma -> apps/turnos en todo el repo.
+
+Verificado: pint 157 PASS · phpunit 7/7 (68) · smokes 305/0 ·
+E2E 38/0 · preflight 11 PASS 8 WARN 0 FAIL · deploy:package 2 zips OK.
+
+---
+
