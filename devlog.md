@@ -272,3 +272,7 @@ E2E 38/0 · preflight 11 PASS 8 WARN 0 FAIL · deploy:package 2 zips OK.
 
 ---
 
+### 2026-09-26 — docs: gotcha de la copia descargada -> redistribuida en el espejo local
+
+---
+
