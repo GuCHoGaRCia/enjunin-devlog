@@ -311,3 +311,7 @@ smoke consulta.php (35 OK) al array; literales RESULTADO E2E 34->38; rebaseado s
 
 ---
 
+### 2026-09-26 — ci: pint a 157 archivos (setup-once.php, Etapa 14/convivencia cPanel)
+
+---
+
