@@ -315,3 +315,7 @@ smoke consulta.php (35 OK) al array; literales RESULTADO E2E 34->38; rebaseado s
 
 ---
 
+### 2026-09-26 — ci: apps/plataforma -> apps/turnos (repo local ahora es el espejo del hosting)
+
+---
+
