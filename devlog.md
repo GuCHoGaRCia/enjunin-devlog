@@ -319,3 +319,7 @@ smoke consulta.php (35 OK) al array; literales RESULTADO E2E 34->38; rebaseado s
 
 ---
 
+### 2026-09-29 — docs: checklist de despliegue en hosting - roadmap ejecutable con gates (fases 2-4 completadas; subdominio turnos + SSL central verificados; alcance wildcard *.turnos cambiado a subdominio manual post-pago)
+
+---
+
