@@ -331,3 +331,7 @@ smoke consulta.php (35 OK) al array; literales RESULTADO E2E 34->38; rebaseado s
 
 ---
 
+### 2026-09-30 — fix(turnos): preflight acepta PHP >= 8.2 (8.3 soportado por Laravel 12; el CLI no lo gobierna MultiPHP)
+
+---
+
