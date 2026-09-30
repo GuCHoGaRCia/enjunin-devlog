@@ -335,3 +335,7 @@ smoke consulta.php (35 OK) al array; literales RESULTADO E2E 34->38; rebaseado s
 
 ---
 
+### 2026-09-30 — fix(turnos): disco public apunta a public_path('storage') — hosting sin symlink()/exec() (cPanel compartido); en dev resuelve vía junction
+
+---
+
