@@ -323,3 +323,7 @@ smoke consulta.php (35 OK) al array; literales RESULTADO E2E 34->38; rebaseado s
 
 ---
 
+### 2026-09-30 — fix(turnos): setup-once requiere vendor/autoload (Class Application not found en CLI) + guarda PHP >= 8.2
+
+---
+
