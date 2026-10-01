@@ -339,3 +339,7 @@ smoke consulta.php (35 OK) al array; literales RESULTADO E2E 34->38; rebaseado s
 
 ---
 
+### 2026-09-30 — fix(turnos): usePublicPath al docroot real (public_html/turnos) — en prod public_path() apuntaba a apps/turnos/public no servido (Vite, disco publico, preflight)
+
+---
+
