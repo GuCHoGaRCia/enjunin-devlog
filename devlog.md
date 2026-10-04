@@ -363,3 +363,9 @@ smoke consulta.php (35 OK) al array; literales RESULTADO E2E 34->38; rebaseado s
 
 ---
 
+### 2026-10-04 — fix: alta de paciente reventaba 500 con fecha_nacimiento vacia
+
+Laravel saltea las reglas no implicitas sobre strings vacios (nullable|date nunca corrio), el '' del snapshot de Livewire llegaba al INSERT y MySQL strict lo rechazaba con SQLSTATE 22007. Normaliza '' -> null antes de validar, como ya hacia GestionUsuarios. Test de regresion PacienteAltaTest (rojo -> verde).
+
+---
+
