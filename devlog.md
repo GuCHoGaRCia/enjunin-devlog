@@ -355,3 +355,7 @@ smoke consulta.php (35 OK) al array; literales RESULTADO E2E 34->38; rebaseado s
 
 ---
 
+### 2026-10-04 — fix(cuentas): incluir contacto_nombre y admin_password en reglas de validate (alta siempre fallaba)
+
+---
+
