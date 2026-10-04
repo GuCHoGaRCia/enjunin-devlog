@@ -369,3 +369,7 @@ Laravel saltea las reglas no implicitas sobre strings vacios (nullable|date nunc
 
 ---
 
+### 2026-10-04 — docs(checklist): Fase 9 — cuenta prueba creada (Opción B), smoke 5 y 6 en verde, bug 4 (500 al crear paciente por '' en fecha)
+
+---
+
