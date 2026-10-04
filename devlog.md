@@ -343,3 +343,7 @@ smoke consulta.php (35 OK) al array; literales RESULTADO E2E 34->38; rebaseado s
 
 ---
 
+### 2026-10-04 — docs(checklist): cierra Fases 7 y 8 (setup-once, 4 crons, preflight 17/0/0, fixes public_path/filesystems/build, login /admin) + nota npm build en re-despliegues
+
+---
+
