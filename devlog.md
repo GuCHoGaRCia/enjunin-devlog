@@ -347,3 +347,7 @@ smoke consulta.php (35 OK) al array; literales RESULTADO E2E 34->38; rebaseado s
 
 ---
 
+### 2026-10-04 — feat(tenancy): subdominios planos {slug}.enjunin.com.ar — sin nivel .turnos.; el producto se diferencia por el docroot de cPanel; guardia de slugs vs CENTRAL_DOMAINS; docs y preflight actualizados (tests 6/6)
+
+---
+
