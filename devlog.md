@@ -359,3 +359,7 @@ smoke consulta.php (35 OK) al array; literales RESULTADO E2E 34->38; rebaseado s
 
 ---
 
+### 2026-10-04 — feat(tenancy): alta tolera BD preexistente + traduce el 1044 de CREATE DATABASE a instrucciones de cPanel
+
+---
+
