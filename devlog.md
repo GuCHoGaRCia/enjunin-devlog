@@ -351,3 +351,7 @@ smoke consulta.php (35 OK) al array; literales RESULTADO E2E 34->38; rebaseado s
 
 ---
 
+### 2026-10-04 — fix(livewire): resolver componentes fuera de class_namespace (419 en todo update)
+
+---
+
