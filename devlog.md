@@ -392,3 +392,12 @@ TransportException (SMTP pendiente, Fase 4).
 
 ---
 
+### 2026-10-09 — ﻿docs: GATE 10 PASADO - Fase 4 (Produccion cPanel) completa
+
+Preflight final en prod con --strict: 17 PASS - 0 WARN - 0 FAIL
+('Listo para produccion'). Fase 9 cerrada (smoke 1-6 en verde; paso 4
+con evidencia de cola + tenant_id; paso 7/autos omitido por credenciales,
+como deuda documentada). Roadmap: Fase 4 y Etapa 14 completadas.
+
+---
+
