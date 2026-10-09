@@ -388,3 +388,7 @@ TransportException (SMTP pendiente, Fase 4).
 
 ---
 
+### 2026-10-09 — docs: Gate 10 paso 7 (autos) omitido por falta de credenciales; preflight informa el cron real de recordatorios
+
+---
+
