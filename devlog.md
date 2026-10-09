@@ -373,3 +373,18 @@ Laravel saltea las reglas no implicitas sobre strings vacios (nullable|date nunc
 
 ---
 
+### 2026-10-09 — fix(scheduler): Schedule::call in-process — proc_open esta off en cPanel
+
+schedule:run nunca ejecuto turnos:recordatorios en produccion: Laravel lanza
+los comandos agendados como proceso hijo con proc_open, deshabilitado en el
+PHP del hosting, y el fallo es silencioso (el schedule imprime DONE igual y
+el error va a laravel.log). Fix: en prod, cron directo
+`0 * * * * artisan turnos:recordatorios >> recordatorios.log` (guia 6) y
+Schedule::call() in-process + name() como respaldo.
+
+Docs: checklist Fase 9 paso 4 (cola con tenant_id) CERRADO con evidencia:
+recordatorio_enviado_at seteado + failed_jobs con LOCATE(tenant_id)=435 y
+TransportException (SMTP pendiente, Fase 4).
+
+---
+
