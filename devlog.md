@@ -410,3 +410,7 @@ como deuda documentada). Roadmap: Fase 4 y Etapa 14 completadas.
 
 ---
 
+### 2026-10-09 — docs: checklist - estado final de los 4 crons verificado 09/10 (borradas temporales de preflight/config:cache/storage:link, recordatorios a la hora en punto)
+
+---
+
