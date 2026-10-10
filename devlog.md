@@ -434,3 +434,28 @@ como deuda documentada). Roadmap: Fase 4 y Etapa 14 completadas.
 
 ---
 
+### 2026-10-10 — feat(pagos): webhook de Mercado Pago con firma e idempotencia (H2)
+
+- FirmaWebhookMercadoPago: valida x-signature (HMAC SHA-256 sobre el
+  manifest id/ts) con el gotcha de PHP verificado (?data.id llega como
+  data_id): se leen ambos formatos de query.
+- WebhookMercadoPagoController: responde 200 siempre (<22 s, MP reintenta
+  cada 15 min), RE-CONSULTA a la API con nuestro token antes de confiar
+  en el payload, y bitacora webhook_events con dedupe por evento_id +
+  firma_ts. Errores de MP quedan en estado=error (los cierra H4).
+- Rutas: POST /webhooks/mercadopago (throttle 60/min) y
+  GET /suscripcion/retorno (back_url del checkout).
+- CSRF excluido para webhooks/* en bootstrap/app.php.
+- Vista pagos/retorno.blade.php autocontenida (sin @vite: la ve un
+  cliente externo).
+- Trait Tests\Concerns\FixturesDeFacturacion: fixtures de cuentas/planes
+  compartidos por los tests de facturacion (refactor de CobroMercadoPagoTest).
+- WebhookMercadoPagoTest: 7 tests (firma invalida 401 sin tocar la API,
+  sin secreto configurado acepta, pago aprobado renueva, entrega repetida
+  no duplica, topic desconocido ignorado, error de MP no revienta,
+  back_url ok).
+
+Suite: 27 tests / 176 assertions OK · Pint PASS
+
+---
+
