@@ -459,3 +459,23 @@ Suite: 27 tests / 176 assertions OK · Pint PASS
 
 ---
 
+### 2026-10-10 — cobro(mp): external_reference con prefijo "turnos:" y pagos ajenos ignorados
+
+La integracion de Mercado Pago es unica para todo EnJunin (enjunin.mp),
+asi que los webhooks de ambas apps pueden recibir pagos de todas.
+Ajustes:
+
+- external_reference pasa a "turnos:suscripcion:{id}" (antes
+  "suscripcion:{id}"): el prefijo de app hace imposible que una app
+  futura que copie este codigo colisione con otra.
+- registrarPagoAprobado: un pago sin nuestra referencia (y sin acuerdo
+  nuestro) se ignora limpio (null + Log::info) en vez de lanzar
+  excepcion; con nuestra referencia y sin suscripcion sigue siendo
+  anomalia real -> excepcion.
+- El reason del acuerdo en MP ahora lleva prefijo "[Turnos]" para
+  distinguir los cobros en el panel unificado de la cuenta.
+- Tests: pago de otra app ignorado + anomalia por referencia propia sin
+  suscripcion (29 tests / 183 assertions OK, Pint PASS).
+
+---
+
