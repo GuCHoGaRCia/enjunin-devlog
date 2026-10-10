@@ -414,3 +414,23 @@ como deuda documentada). Roadmap: Fase 4 y Etapa 14 completadas.
 
 ---
 
+### 2026-10-10 — feat(pagos): H1 Etapa 17 - nucleo de cobro con Mercado Pago
+
+- config/services.php + .env(.production).example: claves MP_ACCESS_TOKEN,
+  MP_PUBLIC_KEY, MP_WEBHOOK_SECRET, MP_AMBIENTE.
+- Migraciones centrales: suscripciones.mp_preapproval_id(unico)/mp_estado/
+  mp_init_point/mp_proxima_cobro_at; pagos.mp_payment_id (UNIQUE = llave de
+  idempotencia del webhook); tabla webhook_events (auditoria + idempotencia
+  de entrega).
+- MercadoPagoClient: REST puro con Http:: (POST /preapproval, GET/PUT
+  /preapproval/{id}, GET /v1/payments/{id}) sin SDK - 4 llamadas y cero
+  vendor extra para el hosting compartido.
+- CobroMercadoPagoService: iniciarCobro() (alta desde /admin sin regalar
+  periodo; cambio de plan pausa el acuerdo viejo y crea el nuevo),
+  registrarPagoAprobado() (idempotente por mp_payment_id, pendiente ->
+  aprobado actualiza la misma fila y recien ahi renueva),
+  sincronizarPreapproval() (paused -> suspender, canceled -> cancelar).
+- Tests: 7 nuevos (53 assertions) -> suite 20/146 OK, pint PASS 170 files.
+
+---
+
