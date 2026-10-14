@@ -523,3 +523,23 @@ Ajustes:
 
 ---
 
+### 2026-10-14 — feat(portal): H3 Etapa 18 - reserva online y Mis turnos del paciente
+
+- TurnosService::slotsDisponibles(): huecos libres desde la grilla del
+  profesional (turnos_horarios_atencion) menos turnos activos y bloqueos,
+  con duracion efectiva. Sin grilla ese dia no se ofrece online.
+- Migracion turnos_pacientes.user_id (FK users nullOnDelete): la ficha
+  clinica queda atada al login del portal y se conserva si se borra la
+  cuenta.
+- PacientePortalService (deUsuario/crearDesdeUsuario/fichaObligatoria).
+- Livewire PacienteTurnos (/paciente/turnos): proximos/pasados, cancelar
+  con anticipacion minima, alta/edicion de ficha (obra social + nro de
+  afiliado o particular).
+- Livewire PacienteReservar (/paciente/reservar): profesional -> dia ->
+  hora -> confirmar; alta via agendar() con las mismas reglas (un
+  paciente nunca genera sobreturno).
+- Rutas con auth + verified + role:paciente; layout components.layouts.public.
+- Smoke portal-paciente -> 45 OK, 0 FAIL. Pint PASS 183. PHPUnit 29/183.
+
+---
+
