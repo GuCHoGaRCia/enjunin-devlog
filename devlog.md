@@ -513,3 +513,13 @@ Ajustes:
 
 ---
 
+### 2026-10-14 — feat(portal): H2 Etapa 18 - verificacion de email para pacientes
+
+- User implementa MustVerifyEmail; feature emailVerification() activa en
+  Fortify. El staff creado por admin nace verificado (no se traba).
+- Notificacion VerifyEmailPortal con branding del consultorio
+  (nombreConsultorio) y enlace firmado /email/verify (60 min).
+- Smoke portal-paciente -> 29 OK, 0 FAIL. Pint PASS. PHPUnit 29/183.
+
+---
+
