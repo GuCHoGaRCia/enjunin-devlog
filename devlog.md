@@ -479,3 +479,7 @@ Ajustes:
 
 ---
 
+### 2026-10-14 — docs(roadmap): Etapa 17 (MP, pausa) + Etapa 18 (portal paciente, landing, HC Digital)
+
+---
+
