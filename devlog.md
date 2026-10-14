@@ -543,3 +543,18 @@ Ajustes:
 
 ---
 
+### 2026-10-14 — feat(portal): H4 Etapa 18 - ficha completa del paciente con HC y auditoria
+
+- Migracion turnos_pacientes: alergias, medicacion_actual, antecedentes
+  (datos clinicos relevantes de la ficha).
+- ABM de recepcion edita los campos clinicos (validacion + form).
+- Boton 'Ficha' abre el detalle: cobertura (obra social + nro de
+  afiliado o Particular), contacto (aviso si tiene cuenta en el portal),
+  resumen clinico y historia clinica en solo lectura (ultimas 50
+  evoluciones).
+- Cada apertura registra 'hc_acceso' en la bitacora (Ley 26.529
+  Art.14: el paciente tiene derecho a saber quien accedio a su HC).
+- Smoke portal-paciente -> 48 OK, 0 FAIL. Pint PASS 184. PHPUnit 29/183.
+
+---
+
