@@ -558,3 +558,19 @@ Ajustes:
 
 ---
 
+### 2026-10-14 — feat(portal): H5 Etapa 18 - cierre de consulta con HC firmada y proxima cita
+
+- Catalogo CIE-10 curado (Support/Cie10, 78 codigos de consulta
+  ambulatoria) con validacion 'in:' en el formulario de la consulta.
+- Migraciones: turnos_profesionales.matricula (ABM de profesionales) y
+  turnos_historia_clinica.{cie10_codigo,cie10_texto,profesional_matricula}
+  - la matricula se snapshotea al firmar cada nota (Res. 434/2019: si
+  cambia la matricula, la nota historica conserva la vigente entonces).
+- Select CIE-10 en la pantalla del medico junto al diagnostico.
+- Al finalizar la consulta se abre el panel 'Agendar la proxima cita':
+  dia -> hora con slotsDisponibles() -> agendar() (mismas reglas que el
+  portal, sin sobreturnos) u Omitir.
+- Smoke portal-paciente -> 58 OK, 0 FAIL. Pint PASS 187. PHPUnit 29/183.
+
+---
+
