@@ -483,3 +483,18 @@ Ajustes:
 
 ---
 
+### 2026-10-14 — feat(portal): H0 Etapa 18 - middleware role en todo el backoffice + rol paciente
+
+- EnsureRole (alias 'role') en TODAS las rutas /turnos/*: cierra el acceso
+  al backoffice de usuarios sin rol (el registro abierto de Fortify creaba
+  cuentas sin rol y Agenda/Pacientes/Profesionales/ListaEspera/Caja solo
+  pedian 'auth').
+- CreateNewUser asigna el rol 'paciente' al registrarse (guardia Role::
+  findOrCreate para cuentas sin el seeder nuevo).
+- Seeder de tenants crea el rol 'paciente'; '/' y '/home' redirigen por
+  rol (paciente -> /paciente/turnos, staff -> agenda, super -> /admin).
+- Nuevo smoke tests/smoke/portal-paciente.php -> 16 OK, 0 FAIL.
+  Suite PHPUnit 29/183 OK. Pint PASS (176 archivos).
+
+---
+
