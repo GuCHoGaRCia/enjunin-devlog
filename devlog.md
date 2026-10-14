@@ -498,3 +498,18 @@ Ajustes:
 
 ---
 
+### 2026-10-14 — feat(portal): H1 Etapa 18 - landing publica del consultorio
+
+- '/' en el subdominio deja de redirigir a login: el invitado ve la
+  landing (nombre, especialidades, profesionales con su agenda semanal,
+  obras sociales, contacto) con CTA Sacar turno / Iniciar sesion.
+- Vista modules/turnos/landing.blade.php + layout components/layouts/
+  public.blade.php (sin FullCalendar ni Livewire, solo Tailwind CDN).
+- Helpers nombreConsultorio()/contactoConsultorio() en app/helpers.php
+  (autoload via composer.json files): el nombre vive en la columna real
+  tenants.nombre, no en el JSON data (tenant('nombre') daba null).
+- DiasSemana::nombre() para rotular horarios.
+- Smoke portal-paciente -> 25 OK, 0 FAIL. Pint PASS 178. PHPUnit 29/183.
+
+---
+
