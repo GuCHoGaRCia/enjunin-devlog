@@ -574,3 +574,25 @@ Ajustes:
 
 ---
 
+### 2026-10-14 — turnos H6: HC Digital conforme (Ley 26.529 / Dto 1089/2012 / Res 434/2019)
+
+- Firma SHA-256 encadenada por paciente (HistoriaClinicaService::firmar
+  en el evento creating; payload solo con campos inmutables porque los
+  FK mutan por SET NULL sin disparar triggers).
+- Inmutabilidad en BD: triggers SIGNAL 45000 bloquean UPDATE/DELETE;
+  la baja del paciente borra la HC en cascada (accion FK sin trigger).
+- Correccion solo por enmienda (enmienda_de_id) con UI en Consulta y
+  badges en staff/portal.
+- verificarCadena() detecta notas con firma falsa o contenido alterado.
+- Exportacion JSON de la HC (actos + firmas + verificacion + retencion
+  10 anos, config/turnos.php) auditada como export_datos.
+- Portal /paciente/historia-clinica: lectura propia con badge de
+  integridad y seccion Accesos a mi historia clinica (Art. 14; el
+  acceso del titular no se registra). Sin PII en descripciones de
+  bitacora (correccion del patron Etapa 11).
+- E2E HTTP +14 checks (landing, portal, HC, EnsureRole del portal):
+  52 OK, 0 FAIL. Smoke portal-paciente 86 OK, 0 FAIL. Pint PASS 192;
+  PHPUnit 29/183.
+
+---
+
