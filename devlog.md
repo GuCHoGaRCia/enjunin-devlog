@@ -614,3 +614,7 @@ Ajustes:
 
 ---
 
+### 2026-10-16 — docs(README): diagrama Mermaid conservador (subgrafos primero) y anclas de navegacion corregidas
+
+---
+
