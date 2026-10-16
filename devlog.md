@@ -626,3 +626,7 @@ Ajustes:
 
 ---
 
+### 2026-10-16 — fix(demo): emails de demo agnosticos al tenant (correo.test en vez de clinicavida.test)
+
+---
+
