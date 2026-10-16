@@ -622,3 +622,7 @@ Ajustes:
 
 ---
 
+### 2026-10-16 — feat(demo): seeder autosuficiente (asegura catalogos y resuelve por nombre) para cualquier tenant
+
+---
+
