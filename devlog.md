@@ -618,3 +618,7 @@ Ajustes:
 
 ---
 
+### 2026-10-16 — style: Pint fix en tests/demo/seed_demo.php (193 archivos PASS)
+
+---
+
