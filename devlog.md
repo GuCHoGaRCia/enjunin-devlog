@@ -630,3 +630,7 @@ Ajustes:
 
 ---
 
+### 2026-10-16 — feat(ops): mail-test.php — prueba de envio real por cron con diagnostico puerto/auth/dominio
+
+---
+
