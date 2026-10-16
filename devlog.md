@@ -596,3 +596,21 @@ Ajustes:
 
 ---
 
+### 2026-10-16 — docs: README del proyecto con capturas + estado de la Etapa 18 desplegada
+
+- README.md nuevo: que es el producto, caracteristicas (paciente /
+  staff / cumplimiento normativo), arquitectura multi-tenant con diagrama
+  Mermaid, roadmap de 18 etapas, stack, verificacion y despliegue.
+- 7 capturas en docs/images/ generadas contra el tenant local (landing,
+  agenda, pacientes, portal del paciente, historia clinica digital,
+  panel central y login).
+- roadmap.md: Etapa 18 marcada completada y desplegada; registro de
+  cierre en produccion (codigo FTP, 6 migraciones, columnas y triggers
+  de inmutabilidad, 4 crons) con SMTP y preflight como pendientes.
+- checklist: anexo del re-despliegue de la Etapa 18 (File Manager
+  trunca zips grandes -> subir por FTP).
+- tests/demo/seed_demo.php: seeder idempotente de dataset de demo con
+  guarda anti-produccion (para demos y capturas).
+
+---
+
