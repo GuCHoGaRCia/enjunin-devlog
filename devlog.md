@@ -634,3 +634,7 @@ Ajustes:
 
 ---
 
+### 2026-10-17 — fix(ops): mail-test barre puertos Resend (587/2587/2465/465) en una corrida — el hosting filtra el 465
+
+---
+
