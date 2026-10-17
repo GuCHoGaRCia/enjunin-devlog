@@ -638,3 +638,7 @@ Ajustes:
 
 ---
 
+### 2026-10-17 — feat(mail): transporte ResendApiTransport (API HTTPS) — el hosting filtra todo el SMTP saliente
+
+---
+
