@@ -642,3 +642,7 @@ Ajustes:
 
 ---
 
+### 2026-10-18 — fix(ui): marca del tenant en login/nav + nav con menu Mas + 105 campos sin borde y su padding
+
+---
+
