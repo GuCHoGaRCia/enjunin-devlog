@@ -646,3 +646,7 @@ Ajustes:
 
 ---
 
+### 2026-10-18 — docs(roadmap): Etapa 18 CERRADA en prod (SMTP Resend API + preflight 17 PASS) + pulido UI demo y gotchas de produccion
+
+---
+
