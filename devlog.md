@@ -658,3 +658,7 @@ Ajustes:
 
 ---
 
+### 2026-10-23 — feat(mp): H3 — panel /admin/pagos (KPIs por moneda, acuerdos MP con Cobrar, historial y filtros)
+
+---
+
