@@ -654,3 +654,7 @@ Ajustes:
 
 ---
 
+### 2026-10-23 — feat(mp): H4 — cron de reconciliacion turnos:mp-reconciliar (cada 6 h) recupera cobros que el webhook no entrego
+
+---
+
