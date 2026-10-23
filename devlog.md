@@ -650,3 +650,7 @@ Ajustes:
 
 ---
 
+### 2026-10-23 — fix(lang): traducciones es completas (146 keys) — auth/validation/passwords/pagination devolvian la key cruda en pantalla
+
+---
+
