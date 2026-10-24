@@ -666,3 +666,7 @@ Ajustes:
 
 ---
 
+### 2026-10-23 — docs: Etapa 17 DESPLEGADA en prod (panel + cron) — roadmap, 5to cron en checklist, gotchas del despliegue
+
+---
+
