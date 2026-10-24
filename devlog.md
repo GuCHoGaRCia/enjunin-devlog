@@ -670,3 +670,23 @@ Ajustes:
 
 ---
 
+### 2026-10-24 — feat(agenda): doble clic -> ficha del paciente + toast flotante para el rechazo de un drag
+
+- Doble clic sobre un turno abre la ficha rapida del paciente (contacto
+  cliquiable, cobertura, datos clinicos con alergias destacadas y ultimos
+  turnos); el clic simple sigue abriendo la edicion (ventana de 300 ms).
+- Toast de flash flotante (fixed, z-60, auto-oculto a los 7s): antes vivia
+  arriba del calendario y el rechazo de un drag se leia como "no quedo
+  grabado" porque uno miraba el punto de soltada.
+- wire:ignore en #calendar: el morph de Livewire vaciaba el contenedor en
+  cada render (ficha/edicion) y FullCalendar quedaba en blanco hasta el
+  proximo agenda-actualizada.
+- wire:key unico en el toast: el morph conservaba el nodo y Alpine
+  mantenia visible=false del render anterior, asi que los siguientes
+  toasts no se veian nunca.
+- Sin bloques @php en la vista: compileStatements de Blade los deja a
+  medias en esta plantilla (directivas crudas y echos sin compilar).
+- 4 tests nuevos: AgendaFichaPacienteTest (259 assertions en total).
+
+---
+
