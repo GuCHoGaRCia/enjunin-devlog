@@ -662,3 +662,7 @@ Ajustes:
 
 ---
 
+### 2026-10-23 — fix(preflight): MAIL_MAILER=resend ya cuenta como PASS (transporte propio por API, Plan B) — era falsa alarma del chequeo pre-Resend
+
+---
+
