@@ -742,3 +742,26 @@ footer publico, en el login y en el pie de los mails.
 
 ---
 
+### 2026-10-24 — Etapa 19b: equipo medico (careteo) como subtitulo + direcciones de Junin (BA)
+
+- Nueva columna `equipo` (varchar 500) en `tenants`: nombres de los doctores
+  que la componen, separados por coma. Si queda VACIA no se muestra en el
+  perfil publico (hero de la landing y bajo el titulo del login).
+- Criterio de ubicacion: todas las cuentas del SaaS son de Junin (BA) - de
+  ahi el nombre enjunin.com.ar - por eso direccionPublica() completa la
+  direccion con ", Junin, Buenos Aires" solo si viene sin ciudad (sin coma);
+  si quien carga ya escribio ciudad y provincia se respeta tal cual. El link
+  y el iframe de Google Maps usan esa direccion completa (idempotente).
+- Formulario del backoffice: campo "Equipo medico (subtitulo)" (textarea,
+  max 500) con la ayuda "si queda vacio no se muestra", y placeholders de
+  ejemplo de Junin (Av. Illia 1450, Junin, Buenos Aires / tel 2364).
+- Helpers: equipoConsultorio() (split por coma, punto medio, punto y coma o
+  salto de linea) + clave `equipo` en contactoConsultorio().
+- Demo local (Clinica Vida): direccion de Junin y equipo cargado.
+- Docs: roadmap (Etapa 19) y checklist (SQL ahora con `equipo` + SQL opcional
+  de direccion de demo).
+- Tests: DatosConsultorioTest 8 tests / 50 assertions. Suite total
+  52 tests / 328 assertions PASS. Pint 213 archivos PASS.
+
+---
+
