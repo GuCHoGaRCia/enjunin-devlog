@@ -711,3 +711,34 @@ mailer, y SMTP caído sin perder el turno. Suite completa 44/278 OK.
 
 ---
 
+### 2026-10-24 — Etapa 19: datos del consultorio (direccion, WhatsApp, horarios, redes y mapa)
+
+El consultorio edita sus datos publicos desde su propio backoffice
+(/turnos/consultorio, solo rol admin) y se reflejan en la landing, en el
+footer publico, en el login y en el pie de los mails.
+
+- Columnas nuevas en `tenants`: direccion, whatsapp, horarios (json, 7 dias)
+  y redes (json) + migracion central 2026_10_24_000001 (en prod: SQL en
+  phpMyAdmin, no hay artisan).
+- Cuenta::getConnectionName() fuerza la conexion central (mismo criterio que
+  CentralModel): sin eso, un find() en contexto tenant apunta a la BD del
+  consultorio y revienta con "table tenants doesnt exist".
+- Helpers: contactoConsultorio() ampliada (direccion, whatsapp_url, horarios,
+  redes, maps_url, maps_embed) + horariosTextoConsultorio() (agrupa dias
+  consecutivos iguales: "Lun a Vie 08:00 a 18:00"), redesConsultorio(),
+  normalizarRed(), pieContactoMail(), enlaceWhatsApp/enlaceMaps/embebidoMaps.
+- Google Maps sin API key: iframe output=embed en la landing y solo link en
+  los mails (los clientes de correo no muestran iframes).
+- Pantalla Livewire Consultorio + vista, con grilla de 7 dias (dia cerrado =
+  no se muestra), redes (URL o @usuario) y validaciones de tramo horario.
+- Mails: nuevo partial mail/partials/pie-contacto.blade.php, con $pie resuelto
+  al enviar para no depender de tenancy si el mail sale encolado.
+- Apoyo: Support/ConsultorioRedes (plataformas/etiquetas/placeholders) y
+  DiasSemana::ABREVIATURAS.
+- Docs: roadmap (Etapa 19) y checklist de despliegue (22 archivos, SQL y
+  borrar bootstrap/cache/routes-*.php: es la primera subida con ruta nueva).
+- Tests: DatosConsultorioTest (6 tests / 38 assertions). Suite total
+  50 tests / 316 assertions PASS. Pint 213 archivos PASS.
+
+---
+
