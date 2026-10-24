@@ -690,3 +690,24 @@ Ajustes:
 
 ---
 
+### 2026-10-24 — feat(mail): confirmación de reserva online + FROM name del consultorio
+
+- ConfirmacionTurno: mail de confirmación cuando el paciente reserva
+  online (fecha, profesional, cobertura de datos y link a Mis turnos).
+  Se envía FUERA del try de la reserva: si el envío falla, el turno ya
+  existe, se reporta el error y la reserva sigue igual.
+- BrandingMails: al inicializar tenancy mail.from.name pasa a
+  nombreConsultorio() y se revierte al terminar (un worker de cola con
+  varios tenants no arrastra el nombre de una cuenta a otra). Cubre de
+  una sola vez la verificación de email, el recordatorio, el reset de
+  clave y esta confirmación, que salían con "EnJunin Plataforma".
+- Purge del mailer junto con el config: Mailer cachea el from al
+  construirse (MailManager::resolve), si no quedaba el nombre viejo.
+- Fix de tipeo: "próximos7 días" en el paso 2 de la reserva.
+
+Tests: ConfirmacionTurnoOnlineTest (3 tests / 19 assertions) — reserva
+real con Mail::fake, remitente ida y vuelta con reflection sobre el
+mailer, y SMTP caído sin perder el turno. Suite completa 44/278 OK.
+
+---
+
