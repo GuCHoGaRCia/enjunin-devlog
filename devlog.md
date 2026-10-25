@@ -795,3 +795,26 @@ footer publico, en el login y en el pie de los mails.
 
 ---
 
+### 2026-10-25 — Etapa 21: SSO EnJunin (cookie enjunin_sso) para un solo login
+
+- `app/Http/Middleware/SsoEnjunin.php` (nuevo): va en el grupo de `/admin`
+  ANTES de `auth`. Valida la cookie firmada con HMAC-SHA256 (`SSO_SECRET` de
+  `.env`) y deja el panel abierto SIN clave, pero únicamente si ese email es
+  super-admin central: la cookie aporta identidad, nunca permisos. Si hay
+  sesión de super-admin, (re)emite la cookie (dominio `SSO_COOKIE_DOMAIN`,
+  Secure en https, HttpOnly, SameSite=Lax, 12 h, renueva con < 10 min).
+- `SSO_SECRET` vacío → middleware apagado (comportamiento anterior).
+- `bootstrap/app.php`: `EncryptCookies::except('enjunin_sso')` (Enjunin Motors
+  es PHP a secas: no puede descifrar con nuestro APP_KEY) + el middleware en
+  la lista de prioridad antes del ancla `AuthenticatesRequests`, para que
+  `Authenticate` no se lo salte (mismo truco que `CentralOnly`).
+- `routes/web.php`: `SsoEnjunin` en el grupo del panel central.
+- `tests/Feature/PanelSsoTest.php`: 8 tests / 19 assertions (entra sin clave,
+  no entra sin rol, firma falsa, vencida, emisión, apagado).
+- Verificación: suite 62 tests / 361 assertions PASS · Pint 216 PASS.
+- Docs: roadmap Etapa 21 y checklist (Ronda 3: 3 archivos de turnos + 5 de
+  autos + `SSO_SECRET`/`SSO_COOKIE_DOMAIN` en el `.env` y `sso_secret` en el
+  `config/config.php` de autos, con el MISMO valor).
+
+---
+
