@@ -765,3 +765,33 @@ footer publico, en el login y en el pie de los mails.
 
 ---
 
+### 2026-10-25 — Etapa 20: landing comercial central con precios y demo de drag & drop
+
+- `resources/views/welcome.blade.php` reescrita: la portada de
+  turnos.enjunin.com.ar dejo de ser la welcome de Laravel y ahora es la
+  pagina de venta de la app de consultorios / turnos.
+  - Nav + hero con CTA a precios, demo y panel.
+  - Funciones (8): agenda visual, agenda por profesional, pacientes,
+    lista de espera, reserva online, sala de espera, historia clinica y
+    recordatorios/cobros.
+  - Como funciona (5 bloques): la agenda, los pacientes, la lista de
+    espera, la agenda por profesional y la reserva de turnos online.
+  - Precios: 4 planes con limites de profesionales/sedes/turnos.
+  - CTA final + footer.
+- Precios leidos de la tabla `planes` (modulo turnos) desde
+  `routes/web.php`, envueltos en `rescue(..., [])`: si la BD no responde o
+  no hay filas, la seccion queda con mensaje de contacto en vez de 500 en
+  la portada.
+- Demo de cambio de turnos con drag & drop: mini-agenda de 8 horarios con
+  2 turnos arrastrables. HTML5 drag & drop + fallback tactil (tocar turno
+  y luego horario) porque en celular no hay DnD nativo; eventos delegados
+  en el contenedor para que "Restaurar" pueda reemplazar el HTML.
+  La agenda real ya lo hace: `editable: true` -> `Agenda::reprogramar()`.
+- Tests: LandingCentralTest (2 tests / 14 assertions). Suite total
+  54 tests / 342 assertions PASS. Pint 214 archivos PASS.
+- Docs: roadmap (Etapa 20) y checklist (Anexo Ronda 2: subida de 2
+  archivos, renombre de prueba -> consultoriosvida, circuito UAT de punta
+  a punta y gotchas del alta de cuentas).
+
+---
+
