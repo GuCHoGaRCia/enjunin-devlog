@@ -818,3 +818,36 @@ footer publico, en el login y en el pie de los mails.
 
 ---
 
+### 2026-10-30 — Etapa 22+23: marca del consultorio en la landing y los tres roles del consultorio
+
+Etapa 22 — landing del consultorio (portada, logo y frase):
+- Migración central 2026_10_28_000001: columnas foto_portada y frase(180) en tenants.
+- Cuenta (central): foto_portada y frase en $fillable y getCustomColumns().
+- helpers: rutaImagenConsultorio(), logoConsultorio(), portadaConsultorio() y
+  fraseConsultorio() devuelven null si no existe el archivo (fallback).
+- ConsultorioImagenesController (POST /turnos/consultorio/imagenes, role:admin):
+  subida de logo/portada (jpg/jpeg/png/webp, 2-4 MB max), quitar_logo /
+  quitar_portada, borra solo dentro de la carpeta del tenant; la frase se lee con
+  array_key_exists porque ConvertEmptyStringsToNull entrega null.
+- Storage: public/uploads/consultorios/{slug}/ con nombres estables logo.ext /
+  portada.ext; en la BD la ruta relativa al docroot; sin storage:link (en prod no existe).
+- Landing: hero con portada de fondo (velo linear-gradient, fallback al degradado
+  violeta), logo h-20 y frase que reemplaza la bajada por defecto. Layout publico:
+  favicon + meta description + og:* con la marca del consultorio.
+- .gitignore: /public/uploads/.
+- MarcaConsultorioTest: 7 tests / 52 assertions PASS.
+
+Etapa 23 — tres roles por consultorio:
+- Usuarios\Support\Roles: etiquetas humanas Administrador / Secretaria / Medico /
+  Paciente con descripcion y color de badge. Los slugs NO cambian
+  (admin/recepcion/profesional/paciente): solo cambia lo que se muestra.
+- GestionUsuarios multi-rol: form.roles (checkboxes), los roles del portal
+  (paciente) se preservan, autofrota (nadie se quita Administrador desde su propia
+  cuenta) y vinculo profesional editable (para el medico-dueno).
+- Nav: badge con la etiqueta humana junto al nombre.
+- MatrizRolesTest: 8 tests / 84 assertions PASS.
+
+Suite al cerrar ambas etapas: 77 tests / 497 assertions PASS, Pint PASS.
+
+---
+
