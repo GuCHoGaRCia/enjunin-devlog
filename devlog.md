@@ -851,3 +851,37 @@ Suite al cerrar ambas etapas: 77 tests / 497 assertions PASS, Pint PASS.
 
 ---
 
+### 2026-10-30 — Etapa 24: recetas y ordenes del consultorio (codigo unico, vigencia 30/60, firma SHA-256 y QR)
+
+El medico emite desde su consulta el documento que el paciente lleva a la
+farmacia/obra social. Alcance legal en docs/receta-electronica.md: no somos
+plataforma inscripta en el ReNaPDiS, asi que esto es el documento del
+consultorio (identificador unico, vigencia, firma y verificacion) con nota
+legal explicita; la integracion ReNaPDiS (CUIR) queda como trabajo futuro.
+
+- Tabla tenant turnos_recetas (migracion 2026_10_28_100000): codigo unico, FKs
+  paciente/turno/profesional/user, tipo, CIE-10, items JSON, indicaciones,
+  emitida_el/vence_el, estado (emitida/anulada), motivo de anulacion y firma
+  SHA-256 encadenada por paciente (misma tecnica H6: alterar o insertar una fila
+  rompe la cadena). Baja del paciente -> cascada; del profesional/turno -> se
+  conserva.
+- RecetaService: emitir (vigencia 30 dias para medicamentos / 60 para el resto,
+  por Decreto 98/2023), anular (nunca se borra), firmar/verificar/calcularFirma,
+  codigoUnico (12 caracteres en 3 bloques, alfabeto sin 0/O/1/I -> se transcribe
+  a mano desde el papel) y urlVerificacion.
+- Support\Qr: QR en SVG con bacon/bacon-qr-code (ya en el vendor por
+  laravel/fortify; cero dependencias nuevas; sin GD ni Imagick).
+- Pantalla /turnos/recetas (Livewire Recetas, role:admin,profesional; emite solo
+  el profesional y requiere perfil vinculado): filtros por estado/vigencia,
+  lista con badges, impresion y anulacion con motivo.
+- /turnos/receta/{id} (admin+profesional): hoja imprimible autocontenido (CSS
+  propio, sin CDNs), con QR, linea de firma y nota legal ReNaPDiS.
+- Verificacion publica /receta/{codigo} (sin login): estado, fechas, consultorio,
+  profesional + matricula y firma; nunca datos del paciente (Ley 25.326).
+- Nav: link "Recetas" para admin y profesional.
+- RecetaTest: 10 tests / 86 assertions PASS.
+
+Suite completa: 87 tests / 583 assertions PASS, Pint 228 archivos PASS.
+
+---
+
