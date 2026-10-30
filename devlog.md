@@ -885,3 +885,16 @@ Suite completa: 87 tests / 583 assertions PASS, Pint 228 archivos PASS.
 
 ---
 
+### 2026-10-30 — Docs: roadmap actualizado a las Etapas 22/23/24 + checkpoint del mandato + investigacion receta electronica
+
+- docs/roadmap.md: encabezado "Ultima actualizacion" al 30/10/2026 (Etapas
+  22/23/24 cerradas y commiteadas) y entradas detalladas de las tres etapas.
+- docs/receta-electronica.md: investigacion de la Ley 27.553, Decreto 98/2023,
+  Res. 1959/2024 (ReNaPDiS/CUIR) y Res. 2214/2025; que cubre EnJunin hoy y el
+  camino de integracion al registro nacional.
+- docs/checkpoint-2026-10-28-mandato.md: checkpoint de contexto para retomar el
+  proyecto sin depender de la conversacion (estado git, credenciales, reglas,
+  pendientes de produccion).
+
+---
+
