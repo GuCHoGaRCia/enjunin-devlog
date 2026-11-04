@@ -925,3 +925,16 @@ Suite 89/591 PASS, pint 229 PASS.
 
 ---
 
+### 2026-11-04 — fix(agenda): el clic sobre un turno no abría la edición (FC6)
+
+eventClick usaba info.preventDefault(), que en FullCalendar v6 no
+existe (el evento nativo está en info.jsEvent): el TypeError cortaba
+el handler antes del timer de 300ms y nunca se llamaba abrirEdicion.
+El doble clic (ficha) andaba porque su listener vive en eventDidMount.
+
+Misma familia de bug que info.start en eventDrop/eventResize.
+Verificado en prod por consola: "info.preventDefault is not a
+function at eventClick (agenda:169)".
+
+---
+
