@@ -898,3 +898,16 @@ Suite completa: 87 tests / 583 assertions PASS, Pint 228 archivos PASS.
 
 ---
 
+### 2026-11-04 — fix(agenda): drag & drop y resize no guardaban en FullCalendar v6
+
+En eventDrop/eventResize la fecha nueva vive en info.event.start /
+info.event.end; usar info.start (API v5) lanzaba TypeError en
+isoLocal y la llamada a reprogramar/redimensionar nunca se enviaba:
+el movimiento quedaba sólo visual y al volver de otra pantalla la
+agenda recargaba de la BD con el turno en su lugar original.
+
+Verificado en prod (consultoriosvida): drag guarda y persiste tras
+ir a sala de espera y volver; resize guarda duración nueva.
+
+---
+
