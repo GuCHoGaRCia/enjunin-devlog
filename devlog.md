@@ -911,3 +911,17 @@ ir a sala de espera y volver; resize guarda duración nueva.
 
 ---
 
+### 2026-11-04 — fix(lista-espera): 500 al guardar con hora (regex con pipes partida por Laravel)
+
+La regla 'nullable|regex:/^([01]\d|2[0-3]):...$/' se pasaba como string:
+Laravel la explota por '|' y el regex contiene pipes adentro, así que
+preg_match recibía '/^([01]\d' (sin delimitador de cierre) y lanzaba
+ErrorException → 500 en prod al alta de lista de espera con hora cargada
+(con hora vacía 'nullable' salteaba la regla y andaba).
+
+Fix: regla como ARRAY (Laravel no la divide). Reproducido con
+ListaEsperaAltaTest (alta OK + fecha pasada rechazada sin 500).
+Suite 89/591 PASS, pint 229 PASS.
+
+---
+
