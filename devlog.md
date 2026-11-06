@@ -938,3 +938,21 @@ function at eventClick (agenda:169)".
 
 ---
 
+### 2026-11-06 — fix(turnos): guardar datos del consultorio sin redes cargadas (419 enmascarado)
+
+redesNormalizadas() devolvía null cuando no había ninguna red cargada
+(estado por defecto de todo tenant nuevo y del tenant de producción).
+El null sobre la propiedad $redes (cast array) lanzaba un TypeError
+dentro de guardar(), que Livewire captura y convierte en abort(419)
+"Page Expired" con APP_DEBUG=false — el mismo 419 que aparecía en el
+UAT del paso 9.
+
+Corregido para retornar siempre array (el helper redesConsultorio()
+ya tolera []). Agregado test de regresión guardar sin redes cargadas.
+
+Gotcha documentado: HandleRequests::handleUpdate() hace
+catch (\TypeError) → abort(419), así que cualquier TypeError real del
+componente se disfraza de "Page Expired" en producción.
+
+---
+
