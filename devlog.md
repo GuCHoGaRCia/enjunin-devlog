@@ -956,3 +956,19 @@ componente se disfraza de "Page Expired" en producción.
 
 ---
 
+### 2026-11-07 — fix(turnos): impersonar y "abrir" usan el dominio real de la cuenta
+
+- urlImpersonacion arma el host desde la tabla domains (fuente de verdad
+  del dominio actual) en lugar de {id}.{base}: una cuenta puede cambiar de
+  slug/dominio sin romper el link. La firma sigue atada al id, que es lo
+  que valida routes/tenant.php con tenant('id'). Regresión del rename
+  uat-clinica -> uat-consultorios (UAT Etapa 21-24).
+- El link "abrir" del panel central no llevaba esquema y se resolvía como
+  ruta relativa (https://turnos.enjunin.com.ar/admin/{slug}.{base} -> 404);
+  verificado en el navegador antes del fix.
+- Test de regresión: test_url_impersonacion_usa_el_dominio_real_de_la_cuenta.
+
+Suite 91/91 PASS (600 aserciones) + Pint PASS.
+
+---
+
