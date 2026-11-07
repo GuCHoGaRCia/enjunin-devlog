@@ -972,3 +972,16 @@ Suite 91/91 PASS (600 aserciones) + Pint PASS.
 
 ---
 
+### 2026-11-07 — ﻿docs(uat): circuito UAT ejecutado (pasos 1, 3-12 OK) y E22-E24 desplegadas en prod
+
+- checklist: marco los pasos del circuito UAT ejecutados el 07/11/2026
+  contra uat-consultorios.enjunin.com.ar; paso 2 sigue pendiente (SMTP)
+- checklist: agrego procedimiento de rename de dominio de cuenta (cPanel
+  + 2 UPDATEs en BD central sin tocar tenants.id)
+- checklist: gotchas nuevos (FTPS 451 en blades -> File Manager, borrar
+  storage/framework/views tras cambiar un blade, ruta phpMyAdmin,
+  raiz FTP = home)
+- roadmap: E22/E23/E24 con estado de despliegue y verificacion en prod
+
+---
+
