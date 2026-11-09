@@ -985,3 +985,21 @@ Suite 91/91 PASS (600 aserciones) + Pint PASS.
 
 ---
 
+### 2026-11-08 — Fix UAT: cuenta suspendida bloqueada, duracion_min vacio y edad con decimales
+
+- CuentaSuspendida (middleware): tenants con estado suspendida/cancelada
+  ya no pueden usar la app. Corre tras Init tenancy (prioridad en
+  bootstrap/app.php), responde 403 con pantalla propia y deja /logout
+  exento. Antes, suspender desde el panel central no bloqueaba nada.
+- Profesional::duracionMin (mutator): normaliza '' -> null (SQLSTATE
+  22007 "Incorrect integer value" al dejar el campo duracion vacio en la
+  UI). Especialidad no se toca: su columna es NOT NULL con default 30.
+- pacientes.blade.php: edad con ->age en vez de diffInYears (Carbon 3
+  devuelve float y mostraba "39.5 anios").
+- tests/Feature/CuentaSuspendidaTest: 5 tests (suspendida/cancelada
+  bloqueadas, logout exento, '' -> null, edad entera).
+
+Suite completa: 96 tests / 614 assertions en verde.
+
+---
+
