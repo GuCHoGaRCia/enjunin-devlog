@@ -1003,3 +1003,31 @@ Suite completa: 96 tests / 614 assertions en verde.
 
 ---
 
+### 2026-11-08 — Feature: mails de notificacion de turnos al paciente (UAT 08/11/2026)
+
+Cuatro avisos nuevos en el ciclo de vida del turno, todos via
+TurnoMailService (nunca lanza: un fallo de SMTP se loguea y la
+operacion del backoffice sigue igual):
+
+- TurnoConfirmado: la secretaria acepta el pedido (pendiente ->
+  confirmado).
+- TurnoCancelado: rechazo de pedido (estadoPrevio pendiente, asunto
+  "rechazada") o cancelacion de turno confirmado, siempre con motivo.
+- TurnoReprogramado: cambio de dia u horario con el antes y el despues.
+- AgradecimientoTurno: la atención finaliza (atendido).
+
+Enganches en TurnosService: marcar() (confirmado/atendido), cancelar()
+(solo si quien cancela no tiene rol paciente) y reprogramar() (si cambio
+fecha u hora). Destinatario: email de la ficha, fallback al user del
+portal.
+
+UI: la reserva online avisa "Queda pendiente de confirmacion" y el mail
+de confirmacion de reserva aclara que sigue pendiente.
+
+Base abstracta MailTurno con los helpers de fecha/hora/consultorio.
+Tests: TurnosNotificacionesMailTest (7 tests).
+
+Suite completa: 103 tests / 630 assertions en verde.
+
+---
+
