@@ -1043,3 +1043,21 @@ Suite completa: 103 tests / 630 assertions en verde.
 
 ---
 
+### 2026-11-10 — fix(panel): columna Dominio y link "abrir" usan el dominio real de la cuenta
+
+La columna "Dominio" y el ancla "abrir ↗" del panel central armaban el
+host con {slug}.{base}: tras un rename (prueba -> consultoriosvida,
+uat-clinica -> uat-consultorios) mostraban un dominio inexistente y el
+link daba 404. El fix 9ba9f38 solo habia agregado el esquema.
+
+- Cuenta::dominioPublico(): host desde la tabla domains (fuente de
+  verdad) con fallback a {slug}.{base}, mismo criterio que
+  urlImpersonacion().
+- Blade usa el metodo en la columna y en el link; la consulta del panel
+  eager-loads domains (sin N+1).
+- Test de regresion (ambos caminos: con y sin fila en domains).
+
+Suite 104 tests / 632 assertions PASS · Pint 238 archivos PASS.
+
+---
+
