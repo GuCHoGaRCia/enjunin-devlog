@@ -1061,3 +1061,12 @@ Suite 104 tests / 632 assertions PASS · Pint 238 archivos PASS.
 
 ---
 
+### 2026-11-10 — docs(uat): fix del panel Dominio/abrir y tecnica anti-451 gzip+base64
+
+- checklist Ronda 4: fix 5b298fd (columna Dominio y link "abrir" usan
+  Cuenta::dominioPublico() -> dominio real tras rename), verificacion de
+  estado central (prueba=activa, uat=trial 21/11) y el workaround para
+  451 persistente: gzip + base64 embebido en un script one-shot chico.
+
+---
+
