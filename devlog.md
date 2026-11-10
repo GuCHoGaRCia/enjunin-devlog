@@ -1031,3 +1031,15 @@ Suite completa: 103 tests / 630 assertions en verde.
 
 ---
 
+### 2026-11-10 — docs(uat): Ronda 4 — Etapas 21-24 en prod, fixes, mails y cierre del UAT
+
+- checklist: circuito UAT completo (pasos 1-12 OK, mail via Resend),
+  SSO verificado, anexo Ronda 4 con deploy 18/18, fix de la migracion
+  turnos_recetas que faltaba subir, gotchas FTPS 451/0 bytes, script
+  one-shot artisan sin Terminal y credenciales UAT.
+- roadmap: Etapas 19-21 desplegadas en prod, nota de fix en la 24,
+  nueva entrada "Mails de estado del turno (4 flujos)" y cabecera
+  actualizada al 10/11/2026 (suite 103 tests / 630 assertions).
+
+---
+
